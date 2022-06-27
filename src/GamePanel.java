@@ -18,6 +18,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     
     GamePanel() {
     	repaint();
+    	
     }
     
     
@@ -26,20 +27,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.fillRect(0, 0, AdamsGame.WIDTH, AdamsGame.HEIGHT);
 		g.setFont(titleFont);
 		g.setColor(Color.GREEN);
-		g.drawString("NUMBER WARS", 65, 250);
+		g.drawString("NUMBER WARS", 315, 250);
 		g.setFont(enterFont);
-		g.drawString("Press ENTER to start", 115, 500);
-		g.drawString("Press SPACE for instructions", 80, 750);
+		g.drawString("Press ENTER to start", 365, 500);
+		g.drawString("Press SPACE for instructions", 330, 750);
+		
+	}
+private void drawGameState(Graphics g) {
+		g.setColor(Color.GRAY);
+		g.fillRect(0, 0, AdamsGame.WIDTH, AdamsGame.HEIGHT);
+		
 		
 	}
 private void drawEndState(Graphics g) {
 		
 		
 	}
-	private void drawGameState(Graphics g) {
-		
-		
-	}
+	
 
 	public void paintComponent(Graphics g){
 		if(currentState == MENU){
@@ -52,6 +56,8 @@ private void drawEndState(Graphics g) {
 		    drawEndState(g);
 		}
 	}
+	
+	
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -60,8 +66,18 @@ private void drawEndState(Graphics g) {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		if (currentState == MENU) {
+		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+		currentState = GAME;
+		}
+		}
 		
-	}
+		else {
+			currentState++;
+		}
+		
+		
+		}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
