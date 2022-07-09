@@ -21,17 +21,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     	
     }
     
-    
 	void drawMenuState(Graphics g) {
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, AdamsGame.WIDTH, AdamsGame.HEIGHT);
 		g.setFont(titleFont);
 		g.setColor(Color.GREEN);
-		g.drawString("NUMBER WARS", 315, 250);
+		g.drawString("NUMBER SQUARS", 285, 250);
 		g.setFont(enterFont);
 		g.drawString("Press ENTER to start", 365, 500);
 		g.drawString("Press SPACE for instructions", 330, 750);
-		
 	}
 private void drawGameState(Graphics g) {
 		g.setColor(Color.GRAY);
@@ -40,8 +38,16 @@ private void drawGameState(Graphics g) {
 		
 	}
 private void drawEndState(Graphics g) {
+		g.setColor(Color.PINK);
+		g.fillRect(0, 0, AdamsGame.WIDTH, AdamsGame.HEIGHT);
+		g.setFont(titleFont);
+		g.setColor(new Color(120, 120, 200));
+		g.drawString("GAME OVER", 365, 250);
+		g.setFont(enterFont);
+		g.drawString("YOUR SCORE IS", 417, 425);
+		g.drawString("Press ENTER to restart", 385, 600);
 		
-		
+	
 	}
 	
 
@@ -71,11 +77,20 @@ private void drawEndState(Graphics g) {
 		currentState = GAME;
 		}
 		}
-		
+		else if (currentState == GAME) {
+			if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+				currentState = END;
+			}
+		}
+		else if (currentState == END) {
+			if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+				currentState = MENU;
+			}
+		}
 		else {
 			currentState++;
 		}
-		
+		repaint();
 		
 		}
 	@Override
