@@ -5,9 +5,8 @@ public class AdamsGame {
 	public static final int WIDTH = 1000;
     public static final int HEIGHT = 800;
     JFrame frame;
-    GamePanel panel = new GamePanel();
+    GamePanel panel; 
 	public static void main(String[] args) {
-		
 		new AdamsGame().setup();
 		
 		
@@ -16,6 +15,9 @@ public class AdamsGame {
 	
 	AdamsGame() {
 		frame = new JFrame();
+		panel= new GamePanel(frame);
+		frame.add(panel);
+		
 	}
 	void setup() {
 		frame.setVisible(true);

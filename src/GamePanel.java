@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
@@ -15,8 +17,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     final int GAME = 1;
     final int END = 2;
     int currentState= MENU;
-    
-    GamePanel() {
+    JLabel[] label= new JLabel[16];
+    JFrame frame;
+    Box[] b= new Box[16];
+    GamePanel(JFrame frame) {
+    	this.frame= frame;
+    	for (int j=0; j<label.length; j++) {
+    	label[j]= new JLabel(j + "");
+    	label[j].setText(j+"");
+    	add(label[j]);
+    	}
+    	for (int i=1; i<b.length+1; i++) {
+        	b[i]= new Box(100*i, 100*i);
+        	add(b[i]);
+        	}
     	repaint();
     	
     }
@@ -34,6 +48,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 private void drawGameState(Graphics g) {
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, AdamsGame.WIDTH, AdamsGame.HEIGHT);
+		b.draw(g);
 		
 		
 	}
