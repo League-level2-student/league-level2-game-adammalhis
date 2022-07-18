@@ -18,7 +18,7 @@ public class ObjectManager implements KeyListener{
 		for (int i = 0; i < b.length; i++) {
 			b[i].draw(g);
 			int a= bob.nextInt(15);
-			
+			b[a].setColor
 		}
 		
 	}

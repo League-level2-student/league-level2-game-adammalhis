@@ -51,6 +51,7 @@ private void drawGameState(Graphics g) {
 		
 		
 		
+		
 	}
 private void drawEndState(Graphics g) {
 		g.setColor(Color.PINK);
