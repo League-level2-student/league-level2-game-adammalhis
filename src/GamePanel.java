@@ -5,9 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
@@ -17,15 +19,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     final int GAME = 1;
     final int END = 2;
     int currentState= MENU;
+    ObjectManager OM= new ObjectManager();
     
+  
     JFrame frame;
     
     GamePanel(JFrame frame) {
 
-    	for (int i=1; i<b.length+1; i++) {
-        	b[i]= new Box(100*i, 100*i);
-      
-        	}
+        	
     	repaint();
     	
     }
@@ -43,7 +44,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 private void drawGameState(Graphics g) {
 		g.setColor(Color.GRAY);
 		g.fillRect(0, 0, AdamsGame.WIDTH, AdamsGame.HEIGHT);
-		b[].draw(g);
+		OM.draw(g);
+		
+		
+		
+		
 		
 		
 	}
@@ -85,6 +90,9 @@ private void drawEndState(Graphics g) {
 		if (currentState == MENU) {
 		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 		currentState = GAME;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_SPACE) {
+			JOptionPane.showMessageDialog(null, "Combine the numebrs to make the biggest numbers.");
 		}
 		}
 		else if (currentState == GAME) {

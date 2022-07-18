@@ -14,8 +14,11 @@ public class Box {
 		height=100;
 	}
 	void draw(Graphics g) {
+		g.setColor(Color.yellow);
+		g.fillRect(x, y, width, height);
 		g.setColor(Color.black);
 		g.drawRect(x, y, width, height);
+		
 	}
 	
 }
