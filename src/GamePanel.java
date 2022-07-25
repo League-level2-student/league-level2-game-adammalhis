@@ -42,7 +42,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.drawString("Press SPACE for instructions", 330, 750);
 	}
 private void drawGameState(Graphics g) {
-		g.setColor(Color.GRAY);
+		g.setColor(Color.white);
 		g.fillRect(0, 0, AdamsGame.WIDTH, AdamsGame.HEIGHT);
 		OM.draw(g);
 		

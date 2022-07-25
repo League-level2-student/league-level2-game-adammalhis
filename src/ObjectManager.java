@@ -1,4 +1,5 @@
-import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Graphics; 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
@@ -8,17 +9,22 @@ public class ObjectManager implements KeyListener{
 	Random bob= new Random();
 	
 	ObjectManager() {
+		int yellow1= bob.nextInt(b.length);
+		int yellow2= bob.nextInt(b.length);
 		for (int j=0; j<b.length; j++) {
-			b[j] = new Box((j%4)*100+200, (j/4)*100+200);
-			
+			Box amazon = new Box((j%4)*100+200, (j/4)*100+200);
+			if (j==yellow1 || j==yellow2) {
+				amazon.color= new Color(238,228,218);
+			}
+			b[j]= amazon;
 		}
 		
 	}
 	void draw(Graphics g) {
 		for (int i = 0; i < b.length; i++) {
 			b[i].draw(g);
-			int a= bob.nextInt(15);
-			b[a].setColor
+			
+			
 		}
 		
 	}
