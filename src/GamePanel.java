@@ -104,6 +104,7 @@ private void drawEndState(Graphics g) {
 		else if (currentState == END) {
 			if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 				currentState = MENU;
+				OM= new ObjectManager();
 			}
 		}
 		else {

@@ -4,9 +4,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
-public class ObjectManager implements KeyListener{
+public class ObjectManager implements KeyListener {
 	Box[] b= new Box[16];
 	Random bob= new Random();
+	public static final Color YELLOWCOLOR= new Color(238,228,218);
 	
 	ObjectManager() {
 		int yellow1= bob.nextInt(b.length);
@@ -14,7 +15,8 @@ public class ObjectManager implements KeyListener{
 		for (int j=0; j<b.length; j++) {
 			Box amazon = new Box((j%4)*100+200, (j/4)*100+200);
 			if (j==yellow1 || j==yellow2) {
-				amazon.color= new Color(238,228,218);
+				amazon.currentColor= YELLOWCOLOR;
+				
 			}
 			b[j]= amazon;
 		}
