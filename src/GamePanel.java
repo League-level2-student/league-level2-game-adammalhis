@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import javax.swing.Timer;
+
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont= new Font("Arial", Font.PLAIN, 48);
     Font enterFont= new Font("Arial", Font.PLAIN, 24);
@@ -19,13 +21,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     final int GAME = 1;
     final int END = 2;
     int currentState= MENU;
+    Timer frameDraw;
     ObjectManager OM= new ObjectManager();
     
   
     JFrame frame;
     
     GamePanel(JFrame frame) {
-
+    	frameDraw= new Timer(1000/60, this);
+		frameDraw.start();
         	
     	repaint();
     	
@@ -99,6 +103,12 @@ private void drawEndState(Graphics g) {
 		else if (currentState == GAME) {
 			if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 				currentState = END;
+			}
+			if (e.getKeyCode()==KeyEvent.VK_UP) {
+				OM.yellow1=OM.yellow1-((OM.yellow1/4)*4);
+				System.out.println(""+OM.yellow1);
+				OM.b[OM.yellow1].color=OM.YELLOWCOLOR;
+				OM.draw(g);
 			}
 		}
 		else if (currentState == END) {
